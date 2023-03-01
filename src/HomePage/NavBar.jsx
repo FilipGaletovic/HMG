@@ -1,14 +1,17 @@
-import React from 'react'
-import '../CSS/index.css'
-import '../CSS/HomeCSS/MobileNav.css'
-import { useState, useContext, useRef, useEffect } from 'react'
-import {useInView} from 'react-intersection-observer'
-import {Link} from 'react-router-dom'
-import {navBar, SubMenuAbout, SubMenuProducts, SubMenuService} from '../constants/index'
-import { MobileNav, Logo } from './componentExport';
-import { transform } from 'framer-motion'
-const LOCAL_STORAGE_KEY_LOGIN = 'LoginForm'
-
+import React from "react";
+import "../CSS/index.css";
+import "../CSS/HomeCSS/MobileNav.css";
+import { useState, useContext, useRef, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
+import {
+  navBar,
+  SubMenuAbout,
+  SubMenuProducts,
+  SubMenuService,
+} from "../constants/index";
+import { MobileNav, Logo } from "./componentExport";
+const LOCAL_STORAGE_KEY_LOGIN = "LoginForm";
 
 const NavBar = () => {
   
@@ -17,16 +20,19 @@ const NavBar = () => {
   const [LoginLink, setLoginLink] = useState('/Login');
   
   
-  useEffect(() => {
-    handleNavBar()
-  }, [])
   
   
   const handleNavBar = () => {
-    var nav_div = document.getElementById('navbar');
-    var contentProduct_invisible = document.getElementById('subnav__contnentProduct__Invisible');
-    var contentService_invisible = document.getElementById('subnav__contnentService__Invisible');
-    var contentAbout_invisible = document.getElementById('subnav__contnentAbout__Invisible');
+    var nav_div = document.getElementById("navbar");
+    var contentProduct_invisible = document.getElementById(
+      "subnav__contnentProduct__Invisible"
+    );
+    var contentService_invisible = document.getElementById(
+      "subnav__contnentService__Invisible"
+    );
+    var contentAbout_invisible = document.getElementById(
+      "subnav__contnentAbout__Invisible"
+    );
     var invisible = nav_div.offsetTop;
     
         nav_div.classList.add('navInvisible')
@@ -37,34 +43,38 @@ const NavBar = () => {
         contentAbout_invisible.classList.add('content__about__invisible')
       }
       
+      useEffect(() => {
+        handleNavBar()
+      }, [])
       
 
     const hamburger = document.getElementById('hamburgerId');
     const mobileNav = document.getElementById('mobileNavId');
 
-    function handleBurger() {
-        hamburger.classList.toggle('is-active');
-        mobileNav.classList.toggle('is-active');
-    }
+  function handleBurger() {
+    hamburger.classList.toggle("is-active");
+    mobileNav.classList.toggle("is-active");
+  }
 
-    
-    
-    const registerJSON = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_LOGIN))
-    
-    useEffect(() => {
-      if(registerJSON !== null){
-      registerJSON.find(id => id.username !== '' ? setMyAccountText('My Account'): setMyAccountText('Log In'));
-      setLoginLink('/my-account')
-    }
-    else setMyAccountText('Log In')
-  }, [])
-    
+  const registerJSON = JSON.parse(
+    localStorage.getItem(LOCAL_STORAGE_KEY_LOGIN)
+  );
 
+  useEffect(() => {
+    if (registerJSON !== null) {
+      registerJSON.find((id) =>
+        id.username !== ""
+          ? setMyAccountText("My Account")
+          : setMyAccountText("Log In")
+      );
+      setLoginLink("/my-account");
+    } else setMyAccountText("Log In");
+  }, []);
 
   return (
     <>
 
-<div className='navBar' onLoad={handleNavBar} id='navbar' ref={navRef}>
+<div className='navBar' id='navbar' ref={navRef}>
       <div className="navLogo__invisible">
       </div>
       <Link to='/' className='navHome'>Home</Link>
@@ -83,53 +93,50 @@ const NavBar = () => {
       <div className="subNav">
         <button className='subNavBtn'>Service</button>
         <div className="subNav-content contentService" id='subnav__contnentService__Invisible'>
-          <Link to='/service/AutoCad-designs'>AutoCad deisigns</Link>
+          <Link to='/'>AutoCad deisigns</Link>
           <span className='subSpan'></span>
-          <Link to='/service/Third-party-purchase'>Third-party purchase</Link>
+          <Link to='/'>Third-party purchase</Link>
           <span className='subSpan'></span>
-          <Link to='/service/Authentication'>Authentication</Link>
+          <Link to='/'>Authentication</Link>
           <span className='subSpan'></span>
           
         </div>
-      </div>
-      <div className="subNav">
-        <button className='subNavBtn'>About</button>
-        <div className="subNav-content contentAbout" id='subnav__contnentAbout__Invisible'>
-          <Link to='/about/Founders'>Founders</Link>
-          <span className='subSpan'></span>
-          <Link to='/about/Payment-options'>Payment Options</Link>
-          <span className='subSpan'></span>
-          <Link to='/about/Privacy-policy'>Privacy Policy</Link>
-          <span className='subSpan'></span>
+        <div className="subNav">
+          <button className="subNavBtn">About</button>
+          <div
+            className="subNav-content contentAbout"
+            id="subnav__contnentAbout__Invisible"
+          >
+            <Link to="/about/Founders">Founders</Link>
+            <span className="subSpan"></span>
+            <Link to="/about/Payment-options">Payment Options</Link>
+            <span className="subSpan"></span>
+            <Link to="/about/Privacy-policy">Privacy Policy</Link>
+            <span className="subSpan"></span>
+          </div>
         </div>
-      </div>
-      <Link to='/Contact-us' className='btnLink'>
-        <button className='contactBtn'>Contact Us</button>
-      </Link>
-      
-         
-      <Link to={LoginLink} className='btnLink'>
-        <button className='loginBtn' id='logBtn'>{myAccountText}</button>
-      </Link>
+        <Link to="/Contact-us" className="btnLink">
+          <button className="contactBtn">Contact Us</button>
+        </Link>
 
+        <Link to={LoginLink} className="btnLink">
+          <button className="loginBtn" id="logBtn">
+            {myAccountText}
+          </button>
+        </Link>
       </div>
 
       <div className="hamburgerMenu">
-            <button 
-            className="hamburger" 
-            id='hamburgerId'
-            onClick={handleBurger}
-            >
-                <div className="hamburger-bar"></div>
-            </button>
-        </div>
+        <button className="hamburger" id="hamburgerId" onClick={handleBurger}>
+          <div className="hamburger-bar"></div>
+        </button>
+      </div>
 
-      <div className='MobileNav' id='mobileNavId'>
+      <div className="MobileNav" id="mobileNavId">
         <MobileNav />
       </div>
-    
     </>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
