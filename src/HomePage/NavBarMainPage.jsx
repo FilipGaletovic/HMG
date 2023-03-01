@@ -79,11 +79,11 @@ const NavBar = () => {
       <div className="subNav">
         <button className='subNavBtn'>Service</button>
         <div className="subNav-content contentService" id='subnav__contnentService__Invisible'>
-          <Link to='/'>AutoCad deisigns</Link>
+          <Link to='/service/AutoCad-designs'>AutoCad deisigns</Link>
           <span className='subSpan'></span>
-          <Link to='/'>Third-party purchase</Link>
+          <Link to='/service/Third-party-purchase'>Third-party purchase</Link>
           <span className='subSpan'></span>
-          <Link to='/'>Authentication</Link>
+          <Link to='/service/Authentication'>Authentication</Link>
           <span className='subSpan'></span>
           
         </div>

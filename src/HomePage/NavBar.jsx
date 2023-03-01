@@ -17,6 +17,9 @@ const NavBar = () => {
   const [LoginLink, setLoginLink] = useState('/Login');
   
   
+  useEffect(() => {
+    handleNavBar()
+  }, [])
   
   
   const handleNavBar = () => {
@@ -34,9 +37,6 @@ const NavBar = () => {
         contentAbout_invisible.classList.add('content__about__invisible')
       }
       
-      useEffect(() => {
-        handleNavBar()
-      }, [])
       
 
     const hamburger = document.getElementById('hamburgerId');
@@ -64,7 +64,7 @@ const NavBar = () => {
   return (
     <>
 
-<div className='navBar' id='navbar' ref={navRef}>
+<div className='navBar' onLoad={handleNavBar} id='navbar' ref={navRef}>
       <div className="navLogo__invisible">
       </div>
       <Link to='/' className='navHome'>Home</Link>
@@ -83,11 +83,11 @@ const NavBar = () => {
       <div className="subNav">
         <button className='subNavBtn'>Service</button>
         <div className="subNav-content contentService" id='subnav__contnentService__Invisible'>
-          <Link to='/'>AutoCad deisigns</Link>
+          <Link to='/service/AutoCad-designs'>AutoCad deisigns</Link>
           <span className='subSpan'></span>
-          <Link to='/'>Third-party purchase</Link>
+          <Link to='/service/Third-party-purchase'>Third-party purchase</Link>
           <span className='subSpan'></span>
-          <Link to='/'>Authentication</Link>
+          <Link to='/service/Authentication'>Authentication</Link>
           <span className='subSpan'></span>
           
         </div>

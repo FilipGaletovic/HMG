@@ -10,6 +10,9 @@ import PaymentPage from './PaymentPage/PaymentPage';
 import PrivacyPolicyPage from './PrivacyPolicyPage/PrivacyPolicy';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import ContactUs from './ContactPage/ContactUs';
+import AutoCadPage from './AutoCadPage/AutoCadPage';
+import AuthenticationPage from './AuthenticationPage/AuthenticationPage'
+import ThirdPartyPage from './ThirdPartyPurchasePage/ThirdPartyPage'
 
  const App = () => (
     <>
@@ -18,6 +21,9 @@ import ContactUs from './ContactPage/ContactUs';
       <Routes>
       <Route path='/' element={ <HomePage />}/>
         <Route path='/Home' element={ <HomePage />}/>
+        <Route path='/service/AutoCad-designs' element={ <AutoCadPage />}/>
+        <Route path='/service/Third-party-purchase' element={ <ThirdPartyPage />}/>
+        <Route path='/service/Authentication' element={ <AuthenticationPage />}/>
         <Route path='/about/Founders' element={ <FoundersPage />}/>
         <Route path='/about/Payment-options' element={ <PaymentPage />}/>
         <Route path='/about/Privacy-policy' element={ <PrivacyPolicyPage />}/>

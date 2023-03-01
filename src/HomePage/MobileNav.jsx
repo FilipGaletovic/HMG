@@ -40,22 +40,22 @@ const MobileNav = () => {
         <button className='liService'>Service</button>
         <span className='HomeSpan'></span>
         <div className="subNav-content contentService">
-          <Link to='/'>AutoCad deisigns</Link>
+          <Link to='/service/AutoCad-designs'>AutoCad deisigns</Link>
           <span className='subSpan'></span>
-          <Link to='/'>Third-party purchase</Link>
+          <Link to='/service/Third-party-purchase'>Third-party purchase</Link>
           <span className='subSpan'></span>
-          <Link to='/'>Authentication</Link>
+          <Link to='/service/Authentication'>Authentication</Link>
           <span className='subSpan'></span>
           
         </div>
         <button className='liAbout'>About</button>
         <span className='HomeSpan'></span>
         <div className="subNav-content contentAbout">
-          <Link to='/'>Founders</Link>
+          <Link to='/about/Founders'>Founders</Link>
           <span className='subSpan'></span>
-          <Link to='/'>Payment Options</Link>
+          <Link to='/about/Payment-options'>Payment Options</Link>
           <span className='subSpan'></span>
-          <Link to='/'>Privacy Policy</Link>
+          <Link to='/about/Privacy-policy'>Privacy Policy</Link>
           <span className='subSpan'></span>
         </div>
         <button className='btnMobileList'>

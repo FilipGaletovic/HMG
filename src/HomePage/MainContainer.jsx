@@ -25,11 +25,7 @@ const MainContainer = () => {
     let ProductText1 = "Product1";
     let ProductText2 = "Product2";
     let ProductText3 = "Product3";
-    
-    function setDelay(number) {
-        document.querySelector('.skill').setAttribute('data-aos-delay', number)
-      }
-  
+
     return (
    
         
