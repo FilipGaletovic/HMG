@@ -19,7 +19,7 @@ import ThirdPartyPage from './ThirdPartyPurchasePage/ThirdPartyPage'
     <PayPalScriptProvider options={{"client-id": "AUERKjED_jTLmiKCt76h6tkcbvBe3USsCv8RJFbbUGq0-maDCkwvIOzuXfvur74P5tn6_2REJjL3X9UD"}}>
     <div>
       <Routes>
-      <Route path='/' element={ <HomePage />}/>
+        <Route path='/' element={ <HomePage />}/>
         <Route path='/Home' element={ <HomePage />}/>
         <Route path='/service/AutoCad-designs' element={ <AutoCadPage />}/>
         <Route path='/service/Third-party-purchase' element={ <ThirdPartyPage />}/>

@@ -6,11 +6,14 @@ import {useInView} from 'react-intersection-observer'
 import {Link} from 'react-router-dom'
 import {navBar, SubMenuAbout, SubMenuProducts, SubMenuService} from '../constants/index'
 import { MobileNav, Logo } from './componentExport';
+import red_cart_icon from '../assets/red_cart_icon.png'
 const LOCAL_STORAGE_KEY_LOGIN = 'LoginForm'
+const LOCAL_STORAGE_KEY_AUTOCAD = 'AutoCad_order'
 const NavBar = () => {
 
   	const {ref: navRef, inView: navVisible } = useInView()
     const [myAccountText, setMyAccountText] = useState('');
+    const [myAccountCart, setMyAccountCart] = useState();
     const [LoginLink, setLoginLink] = useState('/Login');
     
     window.onscroll = function (e) {
@@ -46,6 +49,7 @@ const NavBar = () => {
     
     
     const registerJSON = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_LOGIN))
+    const AutoCadJSON = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_AUTOCAD))
     
     useEffect(() => {
       if(registerJSON !== null){
@@ -53,9 +57,17 @@ const NavBar = () => {
       setLoginLink('/my-account')
     }
       else setMyAccountText('Log In')
+    
     }, [])
+
+    const [CartNumber, setCartNumber] = useState(0); 
     
-    
+    useEffect(() => {
+      if(AutoCadJSON !== null){
+        setCartNumber([AutoCadJSON.length])
+      }
+    }, [AutoCadJSON])
+
   return (
     <>
    
@@ -105,7 +117,13 @@ const NavBar = () => {
       
          
       <Link to={LoginLink} className='btnLink'>
-        <button className='loginBtn' id='logBtn'>{myAccountText}</button>
+        <button className='loginBtn' id='logBtn'>
+          {myAccountText}
+          {myAccountText === 'My Account' ? 
+          <div className='cart_number'>
+            {CartNumber}
+          </div> : ''}
+        </button>
       </Link>
 
       </div>

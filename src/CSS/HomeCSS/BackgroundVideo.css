@@ -4,9 +4,9 @@
     position: relative;
 }
 .VideoContainer>img{
-    min-width: 120%;
-    height: auto;
+    height: 100%;
     margin-top: 00px;
+    object-fit: cover;
 }
 
 .Content{

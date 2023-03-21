@@ -40,7 +40,7 @@
   
   .AutoCad_first_p {
     width: 100%;
-    height: 70vh;
+    height: 700px;
     z-index: 100;
     position: absolute;
     display: flex;
@@ -80,11 +80,12 @@
     position: absolute;
     top: 100%;
     width: 100%;
-    height: 72vh;
+    height: 800px;
     background: var(--light-gray-gradient);
     display: flex;
     flex-flow: column;
     align-items: center;
+    z-index: 10;
     justify-content: center;
   }
   .AutoCad_second_p > h2 {
@@ -143,4 +144,141 @@
   .second_p_card__button:hover{
     background: var(--blue-main);
   }
+  .order_containers{
+    height: 2000px;
+    margin-top: -600px;
+  }
+
+  .AutoCad_order_container{
+    height: 500px;
+    width: 100%;
+    z-index: 100;
+    position: relative;
+    background: var(--light-gray-gradient);
+    box-shadow: 0 0 15px var(--blue-main);
+  }
   
+  .building_container::before, .oil_pump_container::before, 
+  .oil_rig_container::before, .product_design_container::before{
+    content: '';
+    width: 500px;
+    height: 60px;
+    background: url(../../assets/section-texture.jpeg) no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 100;
+  }
+  .building_container::before, .oil_pump_container::before{
+    transform: skew(14deg);
+    left: -20px;
+    top: -60px;
+    box-shadow: 5px -5px 10px var(--blue-main-transp-light);
+  }
+  .oil_rig_container::before, .product_design_container::before{
+    transform: skew(-14deg);
+    right: -20px;
+    top: -60px;
+    box-shadow: -5px -5px 10px var(--blue-main-transp-light);
+  }
+
+  .building_container > h2 , .oil_pump_container > h2 {
+    position: absolute;
+    font-size: 1.8rem;
+    top: -70px;
+    left: 30px;
+    z-index: 200;
+  }
+  .oil_rig_container> h2, .product_design_container > h2{
+    position: absolute;
+    font-size: 1.8rem;
+    right: 200px;
+    top: -70px;
+    z-index: 200;
+  }
+  .building_container > img{
+    width: 900px;
+    position: absolute;
+    right: 0%;
+    top: 10%;
+  }
+  .oil_pump_container > img{
+    width: 800px;
+    position: absolute;
+    right: 0%;
+    top: 10%;
+  }
+  
+  .oil_rig_container > img{
+    width: 600px;
+    position: absolute;
+    left: 14%;
+    top: 10%;
+  }
+  .product_design_container > img{
+    width: 750px;
+    position: absolute;
+    left: 10%;
+    top: 8%;
+  }
+
+  .autoCad_btn_add_cart{
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    background: var(--gray);
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    transition-duration: .5s;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .autoCad_btn_add_cart:hover{
+    background: yellow;
+    color: #000;
+  }
+  .elements_container > img{
+    width: 2rem;
+    margin-bottom: -10px;
+    margin-left: 5px;
+  }
+  
+
+/* BUILDING SECTION */
+
+  .building_section{
+    left: 15%;
+  }
+ 
+  
+
+  .elements_container{
+    width: 30%;
+    top: 25%;
+    position: absolute;
+  }
+
+
+/* OIL PUMP SECTION */
+  .oil_pump_section{
+    left: 15%;
+  }
+ 
+  
+  /* OIL RIG SECTION */
+  
+  .oil_rig_section{
+    right: 15%;
+  }
+  .oil_rig_section > button {
+    margin-left: 400px;
+  }
+  
+  /* PRODUCT DESIGN SECTION */
+  
+  .product_design{
+    right: 15%;
+  }
+  .product_design > button {
+    margin-left: 400px;
+  }

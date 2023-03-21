@@ -2,7 +2,10 @@ import React from 'react'
 import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import '../CSS/HomeCSS/MobileNav.css'
+import '../CSS/index.css'
 const LOCAL_STORAGE_KEY_LOGIN = 'LoginForm'
+const LOCAL_STORAGE_KEY_AUTOCAD = 'AutoCad_order'
+
 
 const MobileNav = () => {
 
@@ -10,6 +13,8 @@ const MobileNav = () => {
   const [LoginLink, setLoginLink] = useState('/Login');
   
   const registerJSON = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_LOGIN))
+  const AutoCadJSON = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_AUTOCAD))
+
 
   useEffect(() => {
     if(registerJSON !== null){
@@ -18,6 +23,16 @@ const MobileNav = () => {
   }
     else setMyAccountText('Log In')
   }, [])
+
+
+
+  const [CartNumber, setCartNumber] = useState(0); 
+    
+    useEffect(() => {
+      if(AutoCadJSON !== null){
+        setCartNumber([AutoCadJSON.length])
+      }
+    }, [AutoCadJSON])
 
   return (
     
@@ -63,7 +78,13 @@ const MobileNav = () => {
         </button>
         <span className='HomeSpan'></span>
         <button className='btnMobileList'>
-            <Link to={LoginLink}>{myAccountText}</Link>
+          <Link to={LoginLink}>
+              {myAccountText}
+              {myAccountText === 'My Account' ? 
+          <div className='cart_number'>
+            {CartNumber}
+          </div> : ''}
+          </Link>
         </button>
         <span className='HomeSpan'></span>
 

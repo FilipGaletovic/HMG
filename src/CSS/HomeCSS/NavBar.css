@@ -15,7 +15,7 @@
     width: 100%;
     height: 100px;
     top: 0px;
-    padding-left: 600px;
+    padding-left: 500px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -37,7 +37,7 @@
     width: 65px;
     height: 40px;
     bottom: 11px;
-    left: 732px;
+    left: 0px;
     position: absolute;
     background-color:#fff;
 }
@@ -64,7 +64,7 @@
 .navBar .navHome:hover{
   animation: none 0s;
   transition-duration: none 0s;
-  cursor:auto;
+  cursor:pointer;
 }
 
 .subNav{
@@ -157,13 +157,13 @@
     left: 50%;
   }
   .content__product__invisible{
-    left: 50%;
+    left: 48%;
   }
   .content__service__invisible{
-    left: 56%;
+    left: 54%;
   }
   .content__about__invisible{
-    left: 62%;
+    left: 60%;
   }
   
 
@@ -289,6 +289,25 @@
 .btnLink{
     width: 100px;
 }
+.cart_number{
+  width: 50px;
+  position: absolute;
+  top: 0;
+  right:10%;
+  font-size: .9rem;
+}
+.cart_number::after{
+  z-index: -10;
+  position: absolute;
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: red;
+  top: -5%;
+  right: 28%;
+}
+
 /* MOBILE NAV */
 
 

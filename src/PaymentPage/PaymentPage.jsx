@@ -6,7 +6,9 @@ import PaypalImg from '../assets/paypal-logo.png'
 import CreditCardImg from '../assets/CreditCard_icons.png'
 import DebitCardImg from '../assets/DebitCard_icons.png'
 import PayPalCheckout from './paypalCheckout';
+import { v4 as uuidv4 } from 'uuid';
 import { PayPalButtons, PayPalScriptProvider  } from '@paypal/react-paypal-js';
+const LOCAL_STORAGE_KEY_PAYMENT = 'PaymentPage'
 
 
 const PaymentPage = () => {
@@ -28,10 +30,6 @@ const PaymentPage = () => {
     const payment_section_three = document.getElementById('paymentSectionThreeId')
     const paypalForm = document.getElementById('paypalForm_Id')
     const CreditCardForm = document.getElementById('CreditCardForm_Id')
-    const paypalRadio = document.getElementById('paypalRadioId')
-    const creditRadio = document.getElementById('creditRadioId')
-    const debitRadio = document.getElementById('debitRadioId')
-    const SaveChangesBtn = document.getElementById('payment_btnSave_Id')
 
    
     
@@ -54,7 +52,14 @@ const PaymentPage = () => {
     if(activeSection !== 0) 
         paymentContainer.style.height = '600px';
 
-
+        const [PaymentInfo, setPaymentInfo] = useState ( () =>  {
+            const PaymentJSON = localStorage.getItem(LOCAL_STORAGE_KEY_PAYMENT)
+              return JSON.parse(PaymentJSON)     
+    })
+    
+        useEffect(() => {
+            localStorage.setItem(LOCAL_STORAGE_KEY_PAYMENT, JSON.stringify(PaymentInfo))
+        }, [PaymentInfo])
 
     
     switch (activeSection) {
@@ -63,6 +68,7 @@ const PaymentPage = () => {
             payment_section_three.classList.add('payment_section_three');
             Object.assign(paypalForm.style, Form_style_visible)
             Object.assign(CreditCardForm.style, Form_style_hidden)
+
             break;
         case 2:
             payment_section_one.classList.remove('payment_section_one')
@@ -80,7 +86,7 @@ const PaymentPage = () => {
             break;
     }
     
-
+    
     
     const handleBtnSave = () => {
         if(CreditCardNumber1 || CreditCardNumber2 || CreditCardNumber3 || CreditCardNumber4)
@@ -89,10 +95,22 @@ const PaymentPage = () => {
         + CreditCardNumber4.toString())
         else return;
 
-
         if(CreditCardNumber < 1000000000000000){
             console.log("rorrw")
         }
+        const newPayment_CreditCard = {
+            id: uuidv4(),
+            CreditCardNumber: 
+            CreditCardNumber1.toString() + 
+            CreditCardNumber2.toString() + CreditCardNumber3.toString()
+            + CreditCardNumber4.toString(),
+            CVV: CreditCardCVV,
+            NameOnCard: CreditCardName
+        }
+        if(activeSection === 2){
+            setPaymentInfo([newPayment_CreditCard])
+        }
+
     } 
 
     const CardNumberRef = useRef();
@@ -100,6 +118,8 @@ const PaymentPage = () => {
     useEffect(() => {
         CardNumberRef.current.focus();
     }, [activeSection])
+
+
 
    
   return (

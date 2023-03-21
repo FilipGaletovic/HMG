@@ -6,12 +6,18 @@ import oil_pump_card_img from "../assets/oil_pump_card.png";
 import product_card_img from "../assets/product_card.png";
 import oil_rig_card_img from "../assets/oil_rig_card.png";
 import Aos from 'aos';
+import AutoCadOrder from "./AutoCadOrder";
 import 'aos/dist/aos.css'
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const AutoCadPageContent = () => {
 
+
+  let title_one = 'Building Designs'
+  let title_two = 'Oil Rig Designs'
+  let title_three = 'Oil Pumps Designs'
+  let title_four = 'Product Design'
 
   useEffect(() => {
     Aos.init({duration: 1000});
@@ -65,7 +71,9 @@ const AutoCadPageContent = () => {
                     voluptatum at, autem consequuntur officia eos incidunt iure iste
                     placeat commodi atque excepturi.
                   </p>
-                <button className="second_p_card__button">Order</button>
+                <a href="#order_one_id">
+                  <button className="second_p_card__button">Order</button>
+                </a>
               </div>
             </div>
             <div className="second_p_card_container"
@@ -81,7 +89,9 @@ const AutoCadPageContent = () => {
                   voluptatum at, autem consequuntur officia eos incidunt iure iste
                   placeat commodi atque excepturi.
                 </p>
-                <button className="second_p_card__button">Order</button>
+                <a href="#order_two_id">
+                  <button className="second_p_card__button">Order</button>
+                </a>
               </div>
             </div>
             <div className="second_p_card_container"
@@ -98,7 +108,9 @@ const AutoCadPageContent = () => {
                   voluptatum at, autem consequuntur officia eos incidunt iure iste
                   placeat commodi atque excepturi.
                 </p>
-                <button className="second_p_card__button">Order</button>
+                <a href="#order_three_id">
+                  <button className="second_p_card__button">Order</button>
+                </a>
               </div>
             </div>
             <div className="second_p_card_container" 
@@ -117,14 +129,31 @@ const AutoCadPageContent = () => {
                   voluptatum at, autem consequuntur officia eos incidunt iure iste
                   placeat commodi atque excepturi.
                 </p>
-                
+                <a href="#order_four_id">
                   <button className="second_p_card__button">Order</button>
+                </a>
                 
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div className="order_containers">
+      <div id="order_one_id">
+        <AutoCadOrder title={title_one} image={builiding_card_img}/>
+      </div>
+      <div id="order_two_id">
+      <AutoCadOrder title={title_two} image={oil_rig_card_img}/>
+      </div>
+      <div id="order_three_id">
+      <AutoCadOrder title={title_three} image={oil_pump_card_img}/>
+      </div>
+      <div id="order_four_id">
+      <AutoCadOrder title={title_four} image={product_card_img}/>
+      </div>
+      </div>
+      
+
     </>
   );
 };

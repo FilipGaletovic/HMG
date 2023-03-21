@@ -59,12 +59,21 @@ const ContactUs = () => {
   }, []);
 
   useEffect(() => {
+    if(registerJSON !== null){
     registerJSON.find(id => id.username !== '' ? setUsername(id.username) : setUsername(''))
     registerJSON.find(id => id.company !== '' ? setCompany(id.company) : setCompany(''))
     registerJSON.find(id => id.email !== '' ? setEmail(id.email) : setEmail(''))
     registerJSON.find(id => id.country !== '' ? setAdress(id.country) : setAdress(''))
     registerJSON.find(id => id.id !== '' ? setPhone(id.id) : setPhone(''))
-  
+    }
+    else{
+      setAdress('')
+      setCompany('')
+      setEmail('')
+      setPhone('')
+      setUsername('')
+      
+    }
   }, [])
 
   return (
